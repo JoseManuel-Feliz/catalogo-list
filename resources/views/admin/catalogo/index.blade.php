@@ -13,7 +13,7 @@
     <ul>
         @foreach ($catalogos as $catalogo)
         <li>
-            <strong>{{ $object->name }}</strong>: {{ $object->description }}
+            <strong>{{ $catalogo->name }}</strong>: {{ $catalogo->description }}
         </li>
         @endforeach
     </ul>
