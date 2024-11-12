@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\CatalogoController as AdminCatalogoController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
+    Route::get('/catalogo', [AdminCatalogoController::class, 'index'])->name('catalogo.index');
+    Route::post('/catalogo', [AdminCatalogoController::class, 'store'])->name('catalogo.store');
+    Route::get('/catalogo/create', [AdminCatalogoController::class, 'create'])->name('catalogo.create');
+    Route::get('/catalogo/{id}', [AdminCatalogoController::class, 'show'])->name('catalogo.show');
+    Route::put('/catalogo/{id}', [AdminCatalogoController::class, "update"])->name('catalogo.update');
+    Route::delete('/catalogo/{id}', [AdminCatalogoController::class, "destroy"])->name('catalogo.delete');
+    Route::get('/catalogo/{id}/edit', [AdminCatalogoController::class, "edit"])->name('catalogo.edit');
+});
