@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Catalogo;
 use Illuminate\Http\Request;
 
 class CatologoController extends Controller
@@ -11,15 +12,16 @@ class CatologoController extends Controller
      */
     public function index()
     {
-        $objects = Object::all();
-        return view('admin.list.index', compact('objects'));
+        $catalogos = Catalogo::all();
+        return view('admin.list.index', compact('catalogos'));
     }
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('admin.catalogo.create');
+        $catalogos = Catalogo::all();
+        return view('admin.catalogo.create', compact('catalogos'));
     }
 
     /**
@@ -27,7 +29,11 @@ class CatologoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $catalogo = Catalogo::create($data);
+
+        return redirect()->route('admin.catalogo.show', $catalogo->id);
     }
 
     /**
@@ -35,7 +41,8 @@ class CatologoController extends Controller
      */
     public function show(string $id)
     {
-        return view('admin.catalogo.show');
+        $catalogo = Catalogo::findOrFail($id);
+        return view('admin.catalogo.show', compact('catalogo'));
     }
 
     /**
@@ -43,7 +50,10 @@ class CatologoController extends Controller
      */
     public function edit(string $id)
     {
-        return view('admin.catalogo.edit');
+
+        $catalogo = Catalogo::findOrFail($id);
+
+        return view('admin.catalogo.edit', compact('catalogo'));
     }
 
     /**
@@ -51,7 +61,10 @@ class CatologoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $data = $request->all();
+        $catalogo = Catalogo::findOrFail($id);
+        $catalogo->update($data);
+        return redirect()->route('admin.catalogo.index', $catalogo->id);
     }
 
     /**
@@ -59,6 +72,7 @@ class CatologoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $catalogo = Catalogo::findOrFail($id);
+        return redirect()->route('admin.catalogo.index', $catalogo->id);
     }
 }
