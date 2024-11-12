@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\CatologoController as AdminCatalogoController;
+use App\Http\Controllers\Admin\CatalogoController as AdminCatalogoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

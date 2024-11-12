@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Catalogo;
 use Illuminate\Http\Request;
 
-class CatologoController extends Controller
+class CatalogoController extends Controller
 {
     /**
      * Display a listing of the resource.
