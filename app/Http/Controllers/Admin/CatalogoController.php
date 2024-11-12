@@ -12,7 +12,7 @@ class CatologoController extends Controller
     public function index()
     {
         $objects = Object::all();
-        return view('admin.list.index', compact('objects'));
+        return view('admin.catalogo.index', compact('objects'));
     }
     /**
      * Show the form for creating a new resource.
