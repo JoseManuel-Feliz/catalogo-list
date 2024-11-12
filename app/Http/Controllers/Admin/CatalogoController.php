@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace  App\Http\Controllers\Admin;
 
 use App\Models\Catalogo;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CatalogoController extends Controller
@@ -13,7 +14,7 @@ class CatalogoController extends Controller
     public function index()
     {
         $catalogos = Catalogo::all();
-        return view('admin.list.index', compact('catalogos'));
+        return view('admin.catalogo.index', compact('catalogos'));
     }
     /**
      * Show the form for creating a new resource.
