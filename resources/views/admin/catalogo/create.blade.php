@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crea Nuovo Oggetto</title>
+    <title>Crea Nuovo Catalogo</title>
 </head>
 <body>
-    <h1>Crea Nuovo Oggetto</h1>
+    <h1>Crea Nuovo Catalogo</h1>
 
-    <form action="{{ route('objects.store') }}" method="POST">
+    <form action="{{ route('catalogos.store') }}" method="POST">
         @csrf
         <label for="name">Nome:</label>
         <input type="text" id="name" name="name" required>
