@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Admin\CatalogoController as AdminCatalogoController;
+use App\Http\Controllers\CatologoController as AdminCatalogoController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -23,7 +23,7 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function() {
+Route::middleware("auth")->prefix("/admin")->name("admin.")->group(function () {
     Route::get('/catalogo', [AdminCatalogoController::class, 'index'])->name('catalogo.index');
     Route::post('/catalogo', [AdminCatalogoController::class, 'store'])->name('catalogo.store');
     Route::get('/catalogo/create', [AdminCatalogoController::class, 'create'])->name('catalogo.create');
